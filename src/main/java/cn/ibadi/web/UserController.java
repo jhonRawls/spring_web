@@ -16,9 +16,7 @@ public class UserController {
 		logger.debug("调用方法------");
 		 model.addAttribute("spring", "Hello Spring MVC Framework!");
 		 try {
-			int  a=0;
-			int b=12;
-			int c=b/a;
+			
 		} catch (Exception e) {
 			logger.info("方法错误:{}",e);
 			logger.error("测试logj4j的打印地址");
@@ -28,5 +26,4 @@ public class UserController {
 	}
 	
 	
-
 }
