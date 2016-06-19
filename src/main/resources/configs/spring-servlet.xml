@@ -18,11 +18,9 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="cn.ibadi.web" />
-	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/"
-		cache-period="31556926" />
+	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/" cache-period="31556926" />
 
-	<bean id="contentNegotiationManager"
-		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="favorPathExtension" value="false" />
 	</bean>
 	<mvc:annotation-driven

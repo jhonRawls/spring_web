@@ -6,10 +6,12 @@
 <body>
  <body>hello ${spring}!
  <input id="btn" type="button" value="click"/>
+ <input type="hidden" id="hide_ele" value="<script>alert('dsds');</script>">
  <script type="text/javascript">
  $(function(){
 	 $("#btn").on("click",function(){
-		 var data={"user":"jhon","pwd":"123456"};
+		 var data={"name":$("#hide_ele").val(),"pwd":"123456"};
+		 console.log(data);
 		 $.ajax({
 			 type:"POST",
 			 url:"/user/login.html",
