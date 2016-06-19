@@ -1,7 +1,26 @@
 <html>
 <title> spring mvc</title>
+
+<script src="/resource/js/jquery-2.1.2.min.js"></script>
 <head></head>
 <body>
  <body>hello ${spring}!
+ <input id="btn" type="button" value="click"/>
+ <script type="text/javascript">
+ $(function(){
+	 $("#btn").on("click",function(){
+		 var data={"user":"jhon","pwd":"123456"};
+		 $.ajax({
+			 type:"POST",
+			 url:"/user/login.html",
+			  contentType : 'application/json',
+			 data:JSON.stringify(data),
+			 success:function(result){
+				 console.log(result);
+			 }
+		 });
+	 });
+ });
+ </script>
 </body>
 </html>
