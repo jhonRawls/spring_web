@@ -23,8 +23,16 @@
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="favorPathExtension" value="false" />
 	</bean>
-	<mvc:annotation-driven
-		content-negotiation-manager="contentNegotiationManager" />
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+	
+	<bean id="htmlEscapingObjectMapper" class="cn.ibadi.utils.HtmlEscapingObjectMapperFactory" />
+	<mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" p:objectMapper-ref="htmlEscapingObjectMapper" />
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
 
 	<!-- 针对freemarker的视图配置 -->
 	<bean id="viewResolver"

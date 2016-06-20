@@ -12,7 +12,8 @@ public class HtmlEscapingObjectMapperFactory implements FactoryBean<ObjectMapper
 
     private final ObjectMapper objectMapper;
 
-    public HtmlEscapingObjectMapperFactory() {
+    @SuppressWarnings("deprecation")
+	public HtmlEscapingObjectMapperFactory() {
         objectMapper = new ObjectMapper();
         objectMapper.getJsonFactory().setCharacterEscapes(new HTMLCharacterEscapes());
     }
@@ -31,7 +32,11 @@ public class HtmlEscapingObjectMapperFactory implements FactoryBean<ObjectMapper
 
     public static class HTMLCharacterEscapes extends CharacterEscapes {
 
-        private final int[] asciiEscapes;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 385391968103525186L;
+		private final int[] asciiEscapes;
 
         public HTMLCharacterEscapes() {
             // start with set of characters known to require escaping (double-quote, backslash etc)
