@@ -30,12 +30,17 @@ public class UserController {
 		userVo.setName("<script>alert('dsds')</script>");
 		model.put("name", userVo.getName());
 		try {
-
+			ResultVo resultVo=new ResultVo();
+			resultVo.setResultContent("<script>alert('dsd')</script>");
+			resultVo.setResultCode(ResultCode.SUCCESS);
+			resultVo.setResultMsg("添加成功!");
+			model.put("user", userVo);
 		} catch (Exception e) {
 			logger.info("方法错误:{}", e);
 			logger.error("测试logj4j的打印地址");
 			// TODO: handle exception
 		}
+		
 		return "login";
 	}
 	
@@ -44,7 +49,7 @@ public class UserController {
 	public ResultVo login(@RequestBody UserVo userVo){
 		ResultVo resultVo=new ResultVo();
 		
-		
+		resultVo.setResultContent("<script>alert('dsd')</script>");
 		resultVo.setResultCode(ResultCode.SUCCESS);
 		resultVo.setResultMsg("添加成功!");
 		return resultVo;

@@ -23,14 +23,23 @@
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="favorPathExtension" value="false" />
 	</bean>
-	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 	
-	<bean id="htmlEscapingObjectMapper" class="cn.ibadi.utils.HtmlEscapingObjectMapperFactory" />
-	<mvc:annotation-driven>
-	    <mvc:message-converters>
-	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" p:objectMapper-ref="htmlEscapingObjectMapper" />
-	    </mvc:message-converters>
-	</mvc:annotation-driven>
+	<!-- Customize ObjectMapper for XSS -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
+        <mvc:message-converters>
+            <bean
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="objectMapper">
+                    <bean class="cn.ibadi.utils.CustomObjectMapper" />
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 	
 	
 
