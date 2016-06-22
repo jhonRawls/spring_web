@@ -32,9 +32,7 @@ public class CustomObjectMapper extends ObjectMapper {
             return String.class;
         }
 
-        public void serialize(String value, JsonGenerator jsonGenerator,
-                SerializerProvider serializerProvider) throws IOException,
-                JsonProcessingException {
+        public void serialize(String value, JsonGenerator jsonGenerator,SerializerProvider serializerProvider) throws IOException,JsonProcessingException {
             if (value != null) {
                 String encodedValue = HtmlUtils.htmlEscape(value.toString());
                 jsonGenerator.writeString(encodedValue);

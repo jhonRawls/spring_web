@@ -27,7 +27,7 @@ public class UserController {
 		logger.debug("调用方法------");
 		model.addAttribute("spring", "Hello Spring MVC Framework!");
 		UserVo userVo=new UserVo();
-		userVo.setName("<script>alert('dsds')</script>");
+		userVo.setName("</input><script>alert('dsds')</script>");
 		model.put("name", userVo.getName());
 		try {
 			ResultVo resultVo=new ResultVo();

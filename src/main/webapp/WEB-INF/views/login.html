@@ -1,12 +1,17 @@
 <html>
 <title> spring mvc</title>
-
 <script src="/resource/js/jquery-2.1.2.min.js"></script>
 <head></head>
 <body>
  <body>hello ${spring}!
  <input id="btn" type="button" value="click"/>
- <input type="hidden" id="hide_ele" value="<script>alert('dsds');</script>">
+ <input type="hidden" id="hide_ele" value="${name}">
+ <input type="text" value="${name}">
+ 
+ <#assign x = "<a href='http://www.baidu.com'>dsds </a>">
+ ${x}
+${name}
+
  <script type="text/javascript">
  $(function(){
 	 $("#btn").on("click",function(){
