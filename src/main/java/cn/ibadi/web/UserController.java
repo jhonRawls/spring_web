@@ -2,6 +2,8 @@
 package cn.ibadi.web;
 
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.ibadi.constant.ResultCode;
 import cn.ibadi.vo.ResultVo;
@@ -40,7 +43,6 @@ public class UserController {
 			logger.error("测试logj4j的打印地址");
 			// TODO: handle exception
 		}
-		
 		return "login";
 	}
 	
@@ -48,16 +50,37 @@ public class UserController {
 	@RequestMapping(value = "login", method = { RequestMethod.POST },produces = "application/json")
 	public ResultVo login(@RequestBody UserVo userVo){
 		ResultVo resultVo=new ResultVo();
-		
 		resultVo.setResultContent("<script>alert('dsd')</script>");
 		resultVo.setResultCode(ResultCode.SUCCESS);
 		resultVo.setResultMsg("添加成功!");
 		return resultVo;
 	}
 	
+	/**ModelAndView即为 mode+view的合体
+	 * setViewName，可以映射地址对应逻辑真实视图，prefix前缀+视图名称+后缀
+	 * @return
+	 */
+	@RequestMapping(value="logout",method={RequestMethod.GET})
+	public ModelAndView logout(){
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("logout");
+		mav.addObject("message","hello user");
+		return mav;
+	}
 	
+	/**
+	 * 没有设置名称 直接映射 /user/show.html
+	 * map可以直接在view中取值
+	 * @return
+	 */
+	@RequestMapping("show")
+	public Map<String, String> getMap(){
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("key1","value-1");
+		map.put("key2","value-2");
+		return map;
+	}
 	
-
 	public static void main(String[] args) {
 		Random ranGen = new SecureRandom();
 		byte[] aesKey = new byte[20];
