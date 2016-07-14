@@ -1,33 +1,16 @@
 <html>
 <title> spring mvc</title>
-<script src="/resource/js/jquery-2.1.2.min.js"></script>
+<script src="/resource/js/jquery.min.js"></script>
+<script src="/resource/js/web.js"></script>
 <head></head>
 <body>
  <body>hello ${spring}!
  <input id="btn" type="button" value="click"/>
  <input type="hidden" id="hide_ele" value="${name}">
  <input type="text" value="${name}">
- 
+  <input id="btn2" type="button" value="click JSon"/>
  <#assign x = "<a href='http://www.baidu.com'>dsds </a>">
  ${x}
 ${name}
-
- <script type="text/javascript">
- $(function(){
-	 $("#btn").on("click",function(){
-		 var data={"name":$("#hide_ele").val(),"pwd":"123456"};
-		 console.log(data);
-		 $.ajax({
-			 type:"POST",
-			 url:"/user/login.html",
-			  contentType : 'application/json',
-			 data:JSON.stringify(data),
-			 success:function(result){
-				 console.log(result);
-			 }
-		 });
-	 });
- });
- </script>
 </body>
 </html>

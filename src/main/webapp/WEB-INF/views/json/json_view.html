@@ -1,0 +1,6 @@
+<#if userList??>
+[<#list userList as user>
+{"userName":"${user.name}","pwd":"${user.pwd}"}
+<#if user_index!=(userList?size-1)>,</#if>
+</#list>]
+</#if>

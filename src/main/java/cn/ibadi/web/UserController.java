@@ -2,7 +2,9 @@
 package cn.ibadi.web;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -79,6 +81,22 @@ public class UserController {
 		map.put("key1","value-1");
 		map.put("key2","value-2");
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "json_view", method = { RequestMethod.POST,RequestMethod.GET },produces = "application/json")
+	public ModelAndView json(){
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("json/json_view");
+		List<UserVo> userVos=new ArrayList<UserVo>();
+		for(int i=0;i<5;i++){
+			UserVo userVo=new UserVo();
+			userVo.setName("123:"+i);
+			userVo.setPwd("pwd_123"+i);
+			userVos.add(userVo);
+		}
+		mav.addObject("userList",userVos);
+		return mav;
 	}
 	
 	public static void main(String[] args) {
