@@ -21,6 +21,8 @@ import cn.ibadi.constant.ResultCode;
 import cn.ibadi.vo.ResultVo;
 import cn.ibadi.vo.UserVo;
 
+
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -46,6 +48,12 @@ public class UserController {
 			// TODO: handle exception
 		}
 		return "login";
+	}
+	
+	@RequestMapping(value = "outPutExcel", method = { RequestMethod.GET })
+	public String outPutExcel(ModelMap model) {
+		
+		return null;
 	}
 	
 	@ResponseBody
