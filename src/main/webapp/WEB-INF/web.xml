@@ -61,6 +61,15 @@
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
+  <servlet>
+    <servlet-name>verifyCode</servlet-name>
+    <servlet-class>cn.ibadi.utils.export.ExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>verifyCode</servlet-name>
+    <url-pattern>/verifyCode</url-pattern>
+  </servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
