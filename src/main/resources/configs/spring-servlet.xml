@@ -16,6 +16,7 @@
 	        http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	<context:annotation-config />
 	<context:component-scan base-package="cn.ibadi.web" />
+	<mvc:resources mapping="/" location="/welcome.html" />
 	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/" cache-period="31556926" />
 
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
