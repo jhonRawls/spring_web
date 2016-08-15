@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import cn.ibadi.constant.ResultCode;
+import cn.ibadi.utils.QrcodeGenerate;
 import cn.ibadi.vo.ResultVo;
 import cn.ibadi.vo.UserVo;
 
@@ -49,6 +50,21 @@ public class UserController {
 		}
 		return "login";
 	}
+	
+	@RequestMapping(value = "outPutQrcodeImage", method = { RequestMethod.GET })
+	public void generateImg(HttpServletResponse response){
+			
+		try {
+			response.setContentType("image/png;");
+			int width=400;
+			int height=400;
+			String imageUrl="http://www.baidu.com";
+			QrcodeGenerate.createRqCode(imageUrl, width, height, response.getOutputStream());
+		} catch (Exception e) {
+			logger.error("生成二维码失败");
+		}
+	}
+
 	
 	@RequestMapping(value = "outPutExcel", method = { RequestMethod.GET })
 	public String outPutExcel(ModelMap model) {
