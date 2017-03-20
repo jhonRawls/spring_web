@@ -8,8 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
+import org.omg.CORBA.Request;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +37,10 @@ public class UserController {
 	Logger logger = Logger.getLogger(UserController.class);
 
 	@RequestMapping(value = "login", method = { RequestMethod.GET })
-	public String toLogin(ModelMap model) {
+	public String toLogin(ModelMap model,HttpServletRequest  request) {
 		logger.debug("调用方法------");
+		request.getSession().setAttribute("12", "ds");
+		System.out.println(request.getSession().getAttribute("12"));	
 		model.addAttribute("spring", "Hello Spring MVC Framework!");
 		UserVo userVo=new UserVo();
 		userVo.setName("</input><script>alert('dsds')</script>");
