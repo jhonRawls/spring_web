@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.omg.CORBA.Request;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -39,8 +38,9 @@ public class UserController {
 	@RequestMapping(value = "login", method = { RequestMethod.GET })
 	public String toLogin(ModelMap model,HttpServletRequest  request) {
 		logger.debug("调用方法------");
-		request.getSession().setAttribute("12", "ds");
-		System.out.println(request.getSession().getAttribute("12"));	
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("data", "dsds");
 		model.addAttribute("spring", "Hello Spring MVC Framework!");
 		UserVo userVo=new UserVo();
 		userVo.setName("</input><script>alert('dsds')</script>");
