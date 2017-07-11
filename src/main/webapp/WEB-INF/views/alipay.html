@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src='http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js'></script>
+<body>
+<form name="pay" id="payform" action="/alipay/pay.html">
+	<input type="text" name="orderNo" id="orderNo"/>
+</form>
+   <input type="button" value="支付宝wap支付" id="wap_pay"/>
+   <input type="button" value="支付宝pc支付" id="pc_pay"/>
+   
+<script type="text/javascript">
+$(function(){/*
+	$("#pay").bind("click",function(){
+		$.ajax({
+   		type: "GET",
+   		url: "/alipay/pay.html",
+   		data: "name=John&location=Boston",
+   		success: function(msg){
+     		
+   		}
+});
+	});
+*/
+	var wap_action="/alipay/wap_pay.html";
+	var pc_action="/alipay/pc_pay.html";
+	
+	$("#wap_pay").bind("click",function (){
+		$("#payform").attr("action",wap_action);
+		$("#payform").submit();
+	});
+	
+	$("#pc_pay").bind("click",function (){
+		$("#payform").attr("action",pc_action);
+		$("#payform").submit();
+	});
+});
+</script>
+</body>
+</html>
